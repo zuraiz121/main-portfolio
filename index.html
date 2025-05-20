@@ -131,11 +131,14 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact">
+    <section id="contact" class="contact" >
         <div class="container">
             <h2 class="section-title">Get in Touch</h2>
             <div class="contact-content">
-                <form id="contact-form" class="contact-form">
+                <form id="contact-form" class="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                    <div class="form-group">
+                        <input type="hidden" name="access_key" value="29a94b9e-7506-4863-ba61-7151ea4137f9">
+                    </div>
                     <div class="form-group">
                         <input type="text" id="name" name="name" required placeholder="Your Name">
                     </div>
