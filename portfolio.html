@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio - Muhammad Zuraiz Khan</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            cursor: none !important;
+        }
+
+        .cursor-outer {
+            width: 40px;
+            height: 40px;
+            background: rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.3);
+            position: fixed;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 9999;
+            transition: transform 0.15s ease, width 0.3s ease, height 0.3s ease;
+        }
+
+        .cursor-inner {
+            width: 8px;
+            height: 8px;
+            background: #000;
+            position: fixed;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            z-index: 9999;
+            transition: transform 0.2s ease;
+        }
+
+        .cursor-trail {
+            position: fixed;
+            pointer-events: none;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle at center,
+                    rgba(0, 0, 0, 0.15) 0%,
+                    rgba(0, 0, 0, 0.1) 30%,
+                    rgba(0, 0, 0, 0.05) 60%,
+                    transparent 100%);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 9998;
+            filter: blur(8px);
+            opacity: 0;
+            transition: opacity 3s ease;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor-outer"></div>
+    <div class="cursor-inner"></div>
+    <div class="cursor-trail"></div>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">MZK</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#services">Services</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="index.html#tech-stack">Tech Stack</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio-page">
+        <div class="container">
+            <h1 class="section-title">My Portfolio</h1>
+            <div class="portfolio-grid">
+                <!-- Portfolio Card 1 -->
+                <div class="portfolio-card">
+                    <div class="portfolio-image">
+                        <img src="images/website1-perfume-site.png
+                        " alt="Project 1">
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Perfumes Website</h3>
+                        <p>A sleek, responsive perfume website built with HTML, CSS, and JS, featuring elegant layout
+                            and modern UI design.</p>
+                        <div class="portfolio-tech">
+                            <span class="tech-tag">Html</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">JS</span>
+                        </div>
+                        <div class="portfolio-links">
+                            <a href="https://zuraiz121.github.io/perfume-website/" class="btn-live" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                            <a href="https://github.com/zuraiz121/perfume-website/" class="btn-github" target="_blank">
+                                <i class="fab fa-github"></i> Source Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Card 2 -->
+                <div class="portfolio-card">
+                    <div class="portfolio-image">
+                        <img src="images/website2-e-commerse.png" alt="Project 2">
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Ecommerse Website</h3>
+                        <p>A responsive eCommerce website built with HTML, CSS, and JS, featuring product listings and
+                            interactive UI for a smooth user experience..</p>
+                        <div class="portfolio-tech">
+                            <span class="tech-tag">Angular</span>
+                            <span class="tech-tag">TypeScript</span>
+                            <span class="tech-tag">Firebase</span>
+                        </div>
+                        <div class="portfolio-links">
+                            <a href="https://zuraiz121.github.io/---E-Commerce-Website/" class="btn-live"
+                                target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                            <a href="https://github.com/zuraiz121/---E-Commerce-Website" class="btn-github"
+                                target="_blank">
+                                <i class="fab fa-github"></i> Source Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Card 3 -->
+                <div class="portfolio-card">
+                    <div class="portfolio-image">
+                        <img src="images/website3-atches.png" alt="Project 3">
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Watches Website</h3>
+                        <p>A modern and responsive watches website built with HTML, CSS, and JS, showcasing elegant
+                            design and smooth user interaction.</p>
+                        <div class="portfolio-tech">
+                            <span class="tech-tag">.NET Core</span>
+                            <span class="tech-tag">C#</span>
+                            <span class="tech-tag">SQL Server</span>
+                        </div>
+                        <div class="portfolio-links">
+                            <a href="https://zuraiz121.github.io/watches-website/" class="btn-live" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                            <a href="https://github.com/zuraiz121/watches-website" class="btn-github" target="_blank">
+                                <i class="fab fa-github"></i> Source Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- new card by me medical site -->
+                <div class="portfolio-card">
+                    <div class="portfolio-image">
+                        <img src="images/website4-medical-website.png" alt="Project 3">
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Hospital Website</h3>
+                        <p>A hospital website built with HTML, CSS, and JS, featuring a user-friendly interface and a
+                            responsive
+                            design.</p>
+                        <div class="portfolio-tech">
+                            <span class="tech-tag">Html</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">js</span>
+                        </div>
+                        <div class="portfolio-links">
+                            <a href="https://health-care-website-1.netlify.app/" class="btn-live" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                            <a href="#" class="btn-github" target="_blank">
+                                <i class="fab fa-github"></i> Source Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <!-- new card medical site end here -->
+
+
+
+                <!-- Portfolio Card 4 -->
+                <div class="portfolio-card">
+                    <div class="portfolio-image">
+                        <img src="images/project1-calculator.png" alt="Project 4">
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Calculator App</h3>
+                        <p>A real-time calculator app built with HTML, CSS, and JS, featuring a user-friendly interface
+                            and basic arithmetic operations.</p>
+                        <div class="portfolio-tech">
+                            <span class="tech-tag">Html</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">js</span>
+                        </div>
+                        <div class="portfolio-links">
+                            <a href="https://zuraiz-01.github.io/Simple-calculator-using-javascript/" class="btn-live"
+                                target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                            <a href="#" class="btn-github" target="_blank">
+                                <i class="fab fa-github"></i> Source Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Card 5 -->
+
+                <div class="portfolio-card">
+                    <div class="portfolio-image">
+                        <img src="images/project2-react.js.png" alt="Project 4">
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Data Fetch in React.js</h3>
+                        <p>Data Fetching in React.js is a process of fetching data from a data source and displaying it
+                            in a component. It is a crucial part of building a React application.</p>
+                        <div class="portfolio-tech">
+                            <span class="tech-tag">Html</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">js</span>
+                        </div>
+                        <div class="portfolio-links">
+                            <a href="https://zuraiz-01.github.io/react_fetch_data_from_json_file/" class="btn-live"
+                                target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                            <a href="#" class="btn-github" target="_blank">
+                                <i class="fab fa-github"></i> Source Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Portfolio Card 6 -->
+
+
+                <div class="portfolio-card">
+                    <div class="portfolio-image">
+                        <img src="images/project3-counterApp.png" alt="Project 4">
+                    </div>
+                    <div class="portfolio-info">
+                        <h3>Counter App With dark Mode</h3>
+                        <p>A counter app with dark mode is a simple web application that allows users to increment and
+                            decrement a counter value. It also includes a dark mode toggle to switch between light and
+                            dark themes.</p>
+                        <div class="portfolio-tech">
+                            <span class="tech-tag">Html</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">js</span>
+                        </div>
+                        <div class="portfolio-links">
+                            <a href="https://zuraiz-01.github.io/counter/" class="btn-live" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                            <a href="#" class="btn-github" target="_blank">
+                                <i class="fab fa-github"></i> Source Code
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- card end here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Muhammad Zuraiz Khan. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/923433154839" target="_blank" class="whatsapp-btn" id="whatsappBtn">
+        <i class="fab fa-whatsapp"></i>
+        <span class="tooltip">Chat with me on WhatsApp</span>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
