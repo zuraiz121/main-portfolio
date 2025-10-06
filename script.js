@@ -97,11 +97,14 @@ updateCursor();
 // Mobile Menu Toggle
 const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');
+const navOverlay = document.querySelector('.nav-overlay');
 const links = document.querySelectorAll('.nav-links li');
 
-hamburger.addEventListener('click', () => {
-    // Toggle Nav
+function toggleMobileMenu() {
     navLinks.classList.toggle('nav-active');
+    hamburger.classList.toggle('toggle');
+    navOverlay.classList.toggle('active');
+    document.body.classList.toggle('nav-open');
     
     // Animate Links
     links.forEach((link, index) => {
@@ -111,10 +114,36 @@ hamburger.addEventListener('click', () => {
             link.style.animation = `navLinkFade 0.5s ease forwards ${index / 7 + 0.3}s`;
         }
     });
+}
 
-    // Hamburger Animation
-    hamburger.classList.toggle('toggle');
-});
+function closeMobileMenu() {
+    navLinks.classList.remove('nav-active');
+    hamburger.classList.remove('toggle');
+    navOverlay.classList.remove('active');
+    document.body.classList.remove('nav-open');
+    
+    // Reset animations
+    links.forEach(l => l.style.animation = '');
+}
+
+if (hamburger && navLinks) {
+    hamburger.addEventListener('click', toggleMobileMenu);
+    
+    // Close mobile menu when clicking on overlay
+    navOverlay.addEventListener('click', closeMobileMenu);
+
+    // Close mobile menu when clicking on a link
+    links.forEach(link => {
+        link.addEventListener('click', closeMobileMenu);
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+            closeMobileMenu();
+        }
+    });
+}
 
 // Smooth Scrolling for Navigation Links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -127,12 +156,37 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 block: 'start'
             });
             // Close mobile menu if open
-            if (navLinks.classList.contains('nav-active')) {
-                hamburger.click();
+            if (navLinks && navLinks.classList.contains('nav-active')) {
+                closeMobileMenu();
             }
         }
     });
 });
+
+// Active Navigation Link
+function setActiveNavLink() {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-links a[href^="#"]');
+    
+    let current = '';
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (window.pageYOffset >= (sectionTop - 200)) {
+            current = section.getAttribute('id');
+        }
+    });
+
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+        }
+    });
+}
+
+// Update active link on scroll
+window.addEventListener('scroll', setActiveNavLink);
 
 // Scroll Animation
 const observerOptions = {
@@ -145,6 +199,17 @@ const observer = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
             entry.target.classList.add('fade-in');
+            
+            // Add staggered animation to portfolio items
+            if (entry.target.classList.contains('portfolio-grid')) {
+                const portfolioItems = entry.target.querySelectorAll('.portfolio-item');
+                portfolioItems.forEach((item, index) => {
+                    setTimeout(() => {
+                        item.style.animation = `portfolioSlideIn 0.8s ease-out forwards`;
+                    }, index * 150);
+                });
+            }
+            
             observer.unobserve(entry.target);
         }
     });
@@ -154,6 +219,12 @@ const observer = new IntersectionObserver((entries, observer) => {
 document.querySelectorAll('section').forEach(section => {
     observer.observe(section);
 });
+
+// Portfolio grid observer
+const portfolioGrid = document.querySelector('.portfolio-grid');
+if (portfolioGrid) {
+    observer.observe(portfolioGrid);
+}
 
 // Form Submission
 const contactForm = document.getElementById('contact-form');
@@ -202,71 +273,4 @@ window.addEventListener('scroll', () => {
     lastScroll = currentScroll;
 });
 
-// Add CSS for mobile menu animation
-const style = document.createElement('style');
-style.textContent = `
-    .nav-links {
-        display: flex;
-    }
-
-    @media screen and (max-width: 768px) {
-        .nav-links {
-            position: fixed;
-            right: 0;
-            height: 100vh;
-            top: 0;
-            background-color: var(--dark-bg);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: space-around;
-            width: 50%;
-            transform: translateX(100%);
-            transition: transform 0.5s ease-in;
-            z-index: 999;
-        }
-
-        .nav-links li {
-            opacity: 0;
-        }
-
-        .nav-active {
-            transform: translateX(0%);
-        }
-
-        .toggle span:nth-child(1) {
-            transform: rotate(-45deg) translate(-5px, 6px);
-        }
-
-        .toggle span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .toggle span:nth-child(3) {
-            transform: rotate(45deg) translate(-5px, -6px);
-        }
-    }
-
-    @keyframes navLinkFade {
-        from {
-            opacity: 0;
-            transform: translateX(50px);
-        }
-        to {
-            opacity: 1;
-            transform: translateX(0);
-        }
-    }
-
-    .scroll-down {
-        transform: translateY(-100%);
-        transition: transform 0.3s ease-in-out;
-    }
-
-    .scroll-up {
-        transform: translateY(0);
-        transition: transform 0.3s ease-in-out;
-    }
-`;
-
-document.head.appendChild(style); 
+// Mobile menu CSS is now handled in styles.css 
