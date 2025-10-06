@@ -13,9 +13,9 @@ let trailY = 0;
 let isMoving = false;
 let moveTimeout;
 
-// Smoothing factors (lower = smoother)
-const cursorSmoothing = 0.12; // Main cursor smoothing (reduced from 0.15)
-const trailSmoothing = 0.06; // Trail smoothing (reduced from 0.08)
+// Smoothing factors (higher = more responsive, lower = smoother)
+const cursorSmoothing = 0.25; // Main cursor smoothing (increased for more responsiveness)
+const trailSmoothing = 0.15; // Trail smoothing (increased for better follow)
 
 // Linear interpolation function
 function lerp(start, end, factor) {
@@ -45,8 +45,8 @@ function updateCursor() {
     cursorTrail.style.transform = `translate(${trailX}px, ${trailY}px)`;
     
     // Dynamic trail opacity based on movement speed
-    if (velocity > 0.1) {
-        cursorTrail.style.opacity = Math.min(velocity * 1.5, 0.8); // Reduced max opacity
+    if (velocity > 0.05) {
+        cursorTrail.style.opacity = Math.min(velocity * 2, 0.6); // More responsive trail
     } else {
         cursorTrail.style.opacity = 0;
     }
@@ -56,7 +56,7 @@ function updateCursor() {
 
 // Track mouse movement with throttling
 let lastMouseMove = 0;
-const throttleDelay = 1000 / 60; // 60fps
+const throttleDelay = 1000 / 120; // 120fps for more responsive cursor
 
 document.addEventListener('mousemove', (e) => {
     const now = performance.now();
@@ -76,7 +76,7 @@ document.addEventListener('mousemove', (e) => {
     clearTimeout(moveTimeout);
     moveTimeout = setTimeout(() => {
         isMoving = false;
-    }, 150); // Increased timeout for smoother trail
+    }, 100); // Reduced timeout for more responsive trail
 });
 
 // Handle cursor visibility on mouse leave/enter

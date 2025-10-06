@@ -46,7 +46,7 @@
     transform: translate(-50%, -50%);
     border-radius: 50%;
     z-index: 9999;
-    transition: transform 0.1s ease;
+    transition: transform 0.05s ease;
 }
 
 .cursor-outer {
@@ -54,14 +54,14 @@
     height: 40px;
     background: rgba(255, 255, 255, 0.1);
     border: 1px solid rgba(255, 255, 255, 0.3);
-    transition: transform 0.15s ease, width 0.3s ease, height 0.3s ease;
+    transition: transform 0.08s ease, width 0.2s ease, height 0.2s ease;
 }
 
 .cursor-inner {
     width: 8px;
     height: 8px;
     background: var(--primary-color);
-    transition: transform 0.2s ease;
+    transition: transform 0.1s ease;
 }
 
 .cursor-trail {
@@ -81,7 +81,7 @@
     z-index: 9998;
     filter: blur(8px);
     opacity: 0;
-    transition: opacity 3s ease;
+    transition: opacity 1s ease;
 }
 
 /* Cursor Hover Effects */
